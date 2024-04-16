@@ -12,6 +12,11 @@ func main() {
 	http.HandleFunc("/hello", yourFunction)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
-func yourFunction(w http.ResponseWriter, r *http.Request){
-	fmt.Fprint(w, "Hello, ", r.URL.Query().Get("name"))
+func yourFunction(w http.ResponseWriter, r *http.Request) {
+	name:= r.URL.Query().Get("name")
+	if r.URL.Query().Get("name") == "" {
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+	fmt.Fprintf(w, "Hello, %s", name)
 }
