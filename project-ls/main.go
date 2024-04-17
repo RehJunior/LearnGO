@@ -10,7 +10,7 @@ import (
 func main() {
 	// Your solution goes here. Good luck!
 	files := listFiles("testdata")
-	fmt.Println(strings.Join(files, " "))
+	fmt.Println(strings.Join(files, "-"))
 }
 
 func listFiles(dirname string) []string {
@@ -23,8 +23,11 @@ func listFiles(dirname string) []string {
 	}
 
 	for _, f := range files {
-		dirs = append(dirs, f.Name())
+
+		result := fmt.Sprintf("%v", f.Name())
+		dirs = append(dirs, result)
 	}
+	
 
 	return dirs
 }
