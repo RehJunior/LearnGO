@@ -25,7 +25,7 @@ func listFiles(dirname string) []string {
 	for _, f := range files {
 
 		result := fmt.Sprintf("%v", f.Name())
-		dirs = append(dirs, result)
+		dirs = append(dirs, result )
 	}
 	
 
